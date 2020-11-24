@@ -65,4 +65,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     );
   }
+
+  //section2 text parallax
+  const title = document.querySelector(".parallax-block");
+  document.addEventListener("scroll", moveTitle);
+
+  function moveTitle() {
+    const rect = title.getBoundingClientRect();
+    const speed = title.getAttribute("data-parallax-speed");
+
+    title.style.transform = `translateY(${rect.top / speed}px)`;
+  }
+
+  //section2 background parallax
+  const block = document.querySelector(".parallax-bg");
+  document.addEventListener("scroll", moveBg);
+
+  function moveBg() {
+    const rect = block.getBoundingClientRect();
+    const speed = block.getAttribute("data-parallax-speed");
+    block.style.backgroundPosition = `0px ${rect.top / speed - 80}px`;
+  }
 });
