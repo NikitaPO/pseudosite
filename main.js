@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function moveTitle() {
     const rect = title.getBoundingClientRect();
     const speed = title.getAttribute("data-parallax-speed");
-
     title.style.transform = `translateY(${rect.top / speed}px)`;
   }
 
@@ -85,5 +84,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const rect = block.getBoundingClientRect();
     const speed = block.getAttribute("data-parallax-speed");
     block.style.backgroundPosition = `0px ${rect.top / speed - 80}px`;
+  }
+
+  //footer bg mousemove parallax
+  const blockWithMouseParallax = document.querySelector(".parallax_mouse");
+  document.addEventListener("mousemove", (e) => parallaxBg(e));
+
+  function parallaxBg(e) {
+    console.log(blockWithMouseParallax);
+    const speed = block.getAttribute("data-parallax-speed");
+    blockWithMouseParallax.style.backgroundPositionX = `${
+      -e.clientX / speed - 200
+    }px`;
   }
 });
