@@ -68,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //section2 text parallax
   const title = document.querySelector(".parallax-block");
+  moveTitle();
   document.addEventListener("scroll", moveTitle);
 
   function moveTitle() {
@@ -91,10 +92,20 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("mousemove", (e) => parallaxBg(e));
 
   function parallaxBg(e) {
-    console.log(blockWithMouseParallax);
     const speed = block.getAttribute("data-parallax-speed");
     blockWithMouseParallax.style.backgroundPositionX = `${
       -e.clientX / speed - 200
     }px`;
   }
+
+  //typed text
+  const text = document.querySelector(".typed_text");
+
+  document.addEventListener("scroll", () => {
+    const textCoords = text.getBoundingClientRect();
+    if (window.innerHeight - textCoords.top > 100) {
+      text.style.animation =
+        "typed_text 10s forwards steps(20), flashing_border 0.75s step-start infinite";
+    }
+  });
 });
